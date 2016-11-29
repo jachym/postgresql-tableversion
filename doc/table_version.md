@@ -3,10 +3,25 @@ table_version
 
 Synopsis
 --------
+Let's start from scratch and create empty database `table_version`
+
+    $ createdb table_version
+    $ psql table_version
+
+First step we need to do, is to install `table_version` extension to our database
 
     #= CREATE EXTENSION table_version;
     CREATE EXTENSION
+
+Next, we create schema `foo` and add it to our search path
     
+    =# CREATE SCHEMA foo;
+    CREATE SCHEMA
+    
+    =# SET search_path TO foo,public;
+
+Our table to be versioned will be called `bar` and will be located in `foo` schema
+
     #= CREATE TABLE foo.bar (
         id INTEGER NOT NULL PRIMARY KEY,
         baz TEXT
